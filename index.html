@@ -136,6 +136,57 @@
   }
 
   .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt-main{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap: 12px;
+    cursor: pointer;
+  }
+  .opt-qty-row{
+    display:none;
+    align-items:center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--paper-dim);
+  }
+  .opt.selected .opt-qty-row{ display:flex; }
+  .opt-qty-btn{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--violet);
+    background: #fff;
+    color: var(--violet-deep);
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .opt-qty-btn:hover{ background: var(--violet-pale); }
+  .opt-qty-value{
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    min-width: 20px;
+    text-align: center;
+  }
+  .opt-remove{
+    margin-left: 8px;
+    font-size: 11px;
+    color: var(--violet);
+    background:none;
+    border:none;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .tag-items{
+    text-align: left;
+    font-size: 13px;
+    color: #efe6f4;
+    margin: 8px 0;
+    line-height: 1.6;
+  }
   .opt{
     display:flex;
     align-items:center;
@@ -361,100 +412,181 @@
     </div>
   </header>
 
-  <div class="step-label" data-i18n="step1"></div>
-  <div class="options" id="options">
-    <button class="opt" data-key="springmix" data-base="25" data-low="10" data-high="10">
-      <span>
-        <span class="opt-name" data-i18n="springmix_name"></span>
-        <span class="opt-hint" data-i18n="springmix_hint"></span>
-      </span>
-      <span class="opt-base"><span data-i18n="from"></span> 25€</span>
-    </button>
-    <button class="opt" data-key="lilium" data-base="18" data-low="10" data-high="10">
-      <span>
-        <span class="opt-name" data-i18n="lilium_name"></span>
-        <span class="opt-hint" data-i18n="lilium_hint"></span>
-      </span>
-      <span class="opt-base"><span data-i18n="from"></span> 18€</span>
-    </button>
-    <button class="opt" data-key="tropical" data-base="35" data-low="10" data-high="10">
-      <span>
-        <span class="opt-name" data-i18n="tropical_name"></span>
-        <span class="opt-hint" data-i18n="tropical_hint"></span>
-      </span>
-      <span class="opt-base"><span data-i18n="from"></span> 35€</span>
-    </button>
-    <button class="opt" data-key="daisies" data-base="20" data-low="10" data-high="10">
-      <span>
-        <span class="opt-name" data-i18n="daisies_name"></span>
-        <span class="opt-hint" data-i18n="daisies_hint"></span>
-      </span>
-      <span class="opt-base"><span data-i18n="from"></span> 20€</span>
-    </button>
-    <button class="opt" data-key="gerberas" data-base="15" data-low="10" data-high="10">
-      <span>
-        <span class="opt-name" data-i18n="gerberas_name"></span>
-        <span class="opt-hint" data-i18n="gerberas_hint"></span>
-      </span>
-      <span class="opt-base"><span data-i18n="from"></span> 15€</span>
-    </button>
-    <button class="opt" data-key="roses3" data-base="18" data-low="10" data-high="10">
-      <span>
-        <span class="opt-name" data-i18n="roses3_name"></span>
-        <span class="opt-hint" data-i18n="roses3_hint"></span>
-      </span>
-      <span class="opt-base"><span data-i18n="from"></span> 18€</span>
-    </button>
-    <button class="opt" data-key="funeralmix" data-base="35" data-low="10" data-high="10">
-      <span>
-        <span class="opt-name" data-i18n="funeralmix_name"></span>
-        <span class="opt-hint" data-i18n="funeralmix_hint"></span>
-      </span>
-      <span class="opt-base"><span data-i18n="from"></span> 35€</span>
-    </button>
-    <button class="opt" data-key="wedding" data-base="50" data-low="10" data-high="10">
-      <span>
-        <span class="opt-name" data-i18n="wedding_name"></span>
-        <span class="opt-hint" data-i18n="wedding_hint"></span>
-      </span>
-      <span class="opt-base"><span data-i18n="from"></span> 50€</span>
-    </button>
+    <div class="opt" data-key="springmix" data-base="25" data-low="10" data-high="10">
+      <div class="opt-main">
+        <span>
+          <span class="opt-name" data-i18n="springmix_name"></span>
+          <span class="opt-hint" data-i18n="springmix_hint"></span>
+        </span>
+        <span class="opt-base"><span data-i18n="from"></span> 25€</span>
+      </div>
+      <div class="opt-qty-row">
+        <button class="opt-qty-btn" data-action="minus" type="button">–</button>
+        <span class="opt-qty-value">1</span>
+        <button class="opt-qty-btn" data-action="plus" type="button">+</button>
+        <button class="opt-remove" type="button" data-i18n="remove"></button>
+      </div>
+    </div>
+    <div class="opt" data-key="lilium" data-base="18" data-low="10" data-high="10">
+      <div class="opt-main">
+        <span>
+          <span class="opt-name" data-i18n="lilium_name"></span>
+          <span class="opt-hint" data-i18n="lilium_hint"></span>
+        </span>
+        <span class="opt-base"><span data-i18n="from"></span> 18€</span>
+      </div>
+      <div class="opt-qty-row">
+        <button class="opt-qty-btn" data-action="minus" type="button">–</button>
+        <span class="opt-qty-value">1</span>
+        <button class="opt-qty-btn" data-action="plus" type="button">+</button>
+        <button class="opt-remove" type="button" data-i18n="remove"></button>
+      </div>
+    </div>    
+    <div class="opt" data-key="tropical" data-base="35" data-low="10" data-high="10">
+      <div class="opt-main">
+        <span>
+          <span class="opt-name" data-i18n="tropical_name"></span>
+          <span class="opt-hint" data-i18n="tropical_hint"></span>
+        </span>
+        <span class="opt-base"><span data-i18n="from"></span> 35€</span>
+      </div>
+      <div class="opt-qty-row">
+        <button class="opt-qty-btn" data-action="minus" type="button">–</button>
+        <span class="opt-qty-value">1</span>
+        <button class="opt-qty-btn" data-action="plus" type="button">+</button>
+        <button class="opt-remove" type="button" data-i18n="remove"></button>
+      </div>
+    </div>
+    <div class="opt" data-key="daisies" data-base="20" data-low="10" data-high="10">
+      <div class="opt-main">
+        <span>
+          <span class="opt-name" data-i18n="daisies_name"></span>
+          <span class="opt-hint" data-i18n="daisies_hint"></span>
+        </span>
+        <span class="opt-base"><span data-i18n="from"></span> 20€</span>
+      </div>
+      <div class="opt-qty-row">
+        <button class="opt-qty-btn" data-action="minus" type="button">–</button>
+        <span class="opt-qty-value">1</span>
+        <button class="opt-qty-btn" data-action="plus" type="button">+</button>
+        <button class="opt-remove" type="button" data-i18n="remove"></button>
+      </div>
+    </div>  
+    <div class="opt" data-key="gerberas" data-base="15" data-low="10" data-high="10">
+      <div class="opt-main">
+        <span>
+          <span class="opt-name" data-i18n="gerberas_name"></span>
+          <span class="opt-hint" data-i18n="gerberas_hint"></span>
+        </span>
+        <span class="opt-base"><span data-i18n="from"></span> 15€</span>
+      </div>
+      <div class="opt-qty-row">
+        <button class="opt-qty-btn" data-action="minus" type="button">–</button>
+        <span class="opt-qty-value">1</span>
+        <button class="opt-qty-btn" data-action="plus" type="button">+</button>
+        <button class="opt-remove" type="button" data-i18n="remove"></button>
+      </div>
+    </div>
+    <div class="opt" data-key="roses3" data-base="18" data-low="10" data-high="10">
+      <div class="opt-main">
+        <span>
+          <span class="opt-name" data-i18n="roses3_name"></span>
+          <span class="opt-hint" data-i18n="roses3_hint"></span>
+        </span>
+        <span class="opt-base"><span data-i18n="from"></span> 18€</span>
+      </div>
+      <div class="opt-qty-row">
+        <button class="opt-qty-btn" data-action="minus" type="button">–</button>
+        <span class="opt-qty-value">1</span>
+        <button class="opt-qty-btn" data-action="plus" type="button">+</button>
+        <button class="opt-remove" type="button" data-i18n="remove"></button>
+      </div>
+    </div>
+    <div class="opt" data-key="funeralmix" data-base="35" data-low="10" data-high="10">
+      <div class="opt-main">
+        <span>
+          <span class="opt-name" data-i18n="funeralmix_name"></span>
+          <span class="opt-hint" data-i18n="funeralmix_hint"></span>
+        </span>
+        <span class="opt-base"><span data-i18n="from"></span> 35€</span>
+      </div>
+      <div class="opt-qty-row">
+        <button class="opt-qty-btn" data-action="minus" type="button">–</button>
+        <span class="opt-qty-value">1</span>
+        <button class="opt-qty-btn" data-action="plus" type="button">+</button>
+        <button class="opt-remove" type="button" data-i18n="remove"></button>
+      </div>
+    </div>
+    <div class="opt" data-key="wedding" data-base="50" data-low="10" data-high="10">
+      <div class="opt-main">
+        <span>
+          <span class="opt-name" data-i18n="wedding_name"></span>
+          <span class="opt-hint" data-i18n="wedding_hint"></span>
+        </span>
+        <span class="opt-base"><span data-i18n="from"></span> 50€</span>
+      </div>
+      <div class="opt-qty-row">
+        <button class="opt-qty-btn" data-action="minus" type="button">–</button>
+        <span class="opt-qty-value">1</span>
+        <button class="opt-qty-btn" data-action="plus" type="button">+</button>
+        <button class="opt-remove" type="button" data-i18n="remove"></button>
+      </div>
+    </div>
+
+
+
   </div>
   
   <div class="step-label" data-i18n="stepCrowns" style="margin-top:22px;"></div>
   <div class="options" id="optionsCrowns">
-    <button class="opt" data-key="crown60" data-base="60" data-low="10" data-high="10">
-      <span>
-        <span class="opt-name" data-i18n="crown60_name"></span>
-        <span class="opt-hint" data-i18n="crown_hint"></span>
-      </span>
-      <span class="opt-base">60€</span>
-    </button>
-    <button class="opt" data-key="crown90" data-base="90" data-low="10" data-high="10">
-      <span>
-        <span class="opt-name" data-i18n="crown90_name"></span>
-        <span class="opt-hint" data-i18n="crown_hint"></span>
-      </span>
-      <span class="opt-base">90€</span>
-    </button>
-    <button class="opt" data-key="crown100" data-base="100" data-low="10" data-high="10">
-      <span>
-        <span class="opt-name" data-i18n="crown100_name"></span>
-        <span class="opt-hint" data-i18n="crown_hint"></span>
-      </span>
-      <span class="opt-base">100€</span>
-    </button>
-  </div>
-
-  <div class="qty-block" id="qtyBlock">
-    <div class="step-label" data-i18n="step2" style="margin-top:22px;"></div>
-    <div class="qty-row">
-      <button id="qtyMinus" type="button">–</button>
-      <span class="qty-value" id="qtyValue">1</span>
-      <button id="qtyPlus" type="button">+</button>
+      <div class="opt" data-key="crown66" data-base="60" data-low="10" data-high="10">
+      <div class="opt-main">
+        <span>
+          <span class="opt-name" data-i18n="crown60_name"></span>
+          <span class="opt-hint" data-i18n="crown_hint"></span>
+        </span>
+        <span class="opt-base"><span data-i18n="from"></span> 60€</span>
+      </div>
+      <div class="opt-qty-row">
+        <button class="opt-qty-btn" data-action="minus" type="button">–</button>
+        <span class="opt-qty-value">1</span>
+        <button class="opt-qty-btn" data-action="plus" type="button">+</button>
+        <button class="opt-remove" type="button" data-i18n="remove"></button>
+      </div>
+    </div>
+      <div class="opt" data-key="crown90" data-base="90" data-low="10" data-high="10">
+      <div class="opt-main">
+        <span>
+          <span class="opt-name" data-i18n="crown90_name"></span>
+          <span class="opt-hint" data-i18n="crown_hint"></span>
+        </span>
+        <span class="opt-base"><span data-i18n="from"></span> 90€</span>
+      </div>
+      <div class="opt-qty-row">
+        <button class="opt-qty-btn" data-action="minus" type="button">–</button>
+        <span class="opt-qty-value">1</span>
+        <button class="opt-qty-btn" data-action="plus" type="button">+</button>
+        <button class="opt-remove" type="button" data-i18n="remove"></button>
+      </div>
+    </div>
+      <div class="opt" data-key="crown100" data-base="100" data-low="10" data-high="10">
+      <div class="opt-main">
+        <span>
+          <span class="opt-name" data-i18n="crown100_name"></span>
+          <span class="opt-hint" data-i18n="crown_hint"></span>
+        </span>
+        <span class="opt-base"><span data-i18n="from"></span> 100€</span>
+      </div>
+      <div class="opt-qty-row">
+        <button class="opt-qty-btn" data-action="minus" type="button">–</button>
+        <span class="opt-qty-value">1</span>
+        <button class="opt-qty-btn" data-action="plus" type="button">+</button>
+        <button class="opt-remove" type="button" data-i18n="remove"></button>
+      </div>
     </div>
   </div>
-  
+
+
   <div class="qty-block" id="dateBlock">
     <div class="step-label" data-i18n="step3" style="margin-top:22px;"></div>
     <div class="date-row">
@@ -465,7 +597,7 @@
   
   <div class="tag" id="tag">
     <div class="tag-label" data-i18n="tagLabel"></div>
-    <div class="tag-qty" id="tagQty"></div>
+    <div class="tag-items" id="tagItems"></div>
     <div class="tag-range" id="tagRange">—</div>
     <div class="tag-note" data-i18n="tagNote"></div>
   </div>
@@ -499,18 +631,18 @@
     pt: {
       eyebrow: "Orçamento",
       title: "O que procura?",
-      sub: "Escolha a opção mais próxima e mostramos uma gama de preços. Envie-nos por WhatsApp e confirmamos os detalhes.",
+      sub: "Escolha um ou mais arranjos e indique a quantidade de cada. Envie-nos por WhatsApp e confirmamos os detalhes.",
       address: "Centro Comercial da Pontinha, R. Santo André 9 loja 12, 1675-174 Pontinha",
       step1: "1 · Escolha um arranjo",
       stepCrowns: "Coroas fúnebres",
-      step2: "2 · Quantidade",
-      step3: "3 · Para quando?",
+      step2: "2 · Para quando?",
       from: "desde",
       tagLabel: "Preço estimado",
       tagNote: "O preço final pode variar consoante o tamanho e as flores escolhidas",
       waBtn: "Enviar para WhatsApp",
-      footer: "Página de teste · não ligada ao inventário em tempo real",
+      footer: "Página não ligada ao inventário em tempo real",
       qtyWord: "un.",
+      remove: "remover",
 
       springmix_name: "Bouquet misto primaveril",
       springmix_hint: "Combinação alegre de flores da estação",
@@ -534,23 +666,27 @@
       crown_hint: "Flores frescas da época",
 
       waMessage: (name, qty, low, high, date, time) =>
-        `Olá! Gostaria de um orçamento para: ${name}\nQuantidade: ${qty}\nGama estimada: ${low} - ${high}\nPara a data ${date} e horário ${time}\nPodem confirmar detalhes e disponibilidade?`
+        waHeader: "Olá! Gostaria de um orçamento para:",
+        waPriceBetween: "preço entre",
+        waQty: "qt",
+        waDate: "Data",
+        waConfirm: "Podem confirmar detalhes e disponibilidade?",
     },
     en: {
       eyebrow: "Price estimate",
       title: "What are you looking for?",
-      sub: "Pick the closest match below and we'll show you a price range. Send it to us on WhatsApp and we'll confirm the details.",
+      sub: "Choose one or more arrangements and set the quantity for each. Send it to us on WhatsApp and we'll confirm the details.",
       address: "Centro Comercial da Pontinha, R. Santo André 9 loja 12, 1675-174 Pontinha",
       step1: "1 · Choose an arrangement",
       stepCrowns: "Funeral crowns",
-      step2: "2 · Quantity",
-      step3: "3 · For when?",
+      step2: "2 · For when?",
       from: "from",
       tagLabel: "Estimated price",
       tagNote: "Final price may vary with size and flower choice",
       waBtn: "Send to WhatsApp",
-      footer: "Test page · not linked to live inventory",
+      footer: "Pase not linked to live inventory",
       qtyWord: "pc.",
+      remove: "remove",
 
       springmix_name: "Spring mixed bouquet",
       springmix_hint: "Cheerful mix of seasonal flowers",
@@ -574,24 +710,25 @@
       crown_hint: "Fresh seasonal flowers",
 
       waMessage: (name, qty, low, high, date, time) =>
-        `Hello! I'd like a price for: ${name}\nQuantity: ${qty}\nEstimated range: ${low} - ${high}\nFor the date ${date} at ${time}\nCould you confirm details and availability?`
+        waHeader: "Hello! I'd like a price for:",
+        waPriceBetween: "price between",
+        waQty: "qty",
+        waDate: "Date",
+        waConfirm: "Could you confirm details and availability?",
     }
   };
 
   let currentLang = 'pt';
-  let selected = null;
-  let qty = 1;
+  let dateBlockShown = false;
 
   const langGate = document.getElementById('langGate');
   const mainPage = document.getElementById('mainPage');
   const langSwitch = document.getElementById('langSwitch');
-  const options = document.querySelectorAll('.opt');
-  const qtyBlock = document.getElementById('qtyBlock');
+  const opts = document.querySelectorAll('.opt');
   const dateBlock = document.getElementById('dateBlock');
-  const qtyValue = document.getElementById('qtyValue');
   const tag = document.getElementById('tag');
+  const tagItems = document.getElementById('tagItems');
   const tagRange = document.getElementById('tagRange');
-  const tagQty = document.getElementById('tagQty');
   const waBtn = document.getElementById('waBtn');
 
   function applyLang(lang){
@@ -603,7 +740,7 @@
     });
     langSwitch.textContent = lang === 'pt' ? 'EN' : 'PT';
     document.documentElement.lang = lang;
-    if (selected) updateTag();
+    refresh();
   }
 
   document.querySelectorAll('.lang-choices button').forEach(btn => {
@@ -622,53 +759,86 @@
     return n.toFixed(2).replace('.', ',') + '€';
   }
 
-  function updateTag(){
-    if(!selected) return;
-    const base = selected.base;
-    const low = base * qty * (1 - selected.lowPct/100);
-    const high = base * qty * (1 + selected.highPct/100);
-    const t = translations[currentLang];
-    tagRange.textContent = formatEuro(low) + ' – ' + formatEuro(high);
-    tagQty.textContent = qty + ' ' + t.qtyWord + ' · ' + t[selected.key + '_name'];
+  function getCart(){
+    const cart = [];
+    opts.forEach(opt => {
+      if (opt.classList.contains('selected')){
+        const qty = parseInt(opt.querySelector('.opt-qty-value').textContent, 10);
+        cart.push({
+          key: opt.dataset.key,
+          base: parseFloat(opt.dataset.base),
+          lowPct: parseFloat(opt.dataset.low),
+          highPct: parseFloat(opt.dataset.high),
+          qty
+        });
+      }
+    });
+    return cart;
   }
 
-  options.forEach(opt => {
-    opt.addEventListener('click', () => {
-      options.forEach(o => o.classList.remove('selected'));
-      opt.classList.add('selected');
+  function refresh(){
+    const cart = getCart();
+    const t = translations[currentLang];
 
-      const key = opt.dataset.key;
-      selected = {
-        key,
-        base: parseFloat(opt.dataset.base),
-        lowPct: parseFloat(opt.dataset.low),
-        highPct: parseFloat(opt.dataset.high)
-      };
-      qty = 1;
-      qtyValue.textContent = qty;
+    if (cart.length === 0){
+      tag.classList.remove('show');
+      dateBlock.classList.remove('show');
+      waBtn.classList.remove('show');
+      return;
+    }
 
-      updateTag();
-      qtyBlock.classList.add('show');
-      dateBlock.classList.add('show');
-      tag.classList.add('show');
-      waBtn.classList.add('show');
+    let totalLow = 0, totalHigh = 0;
+    tagItems.innerHTML = '';
+    cart.forEach(item => {
+      const low = item.base * item.qty * (1 - item.lowPct/100);
+      const high = item.base * item.qty * (1 + item.highPct/100);
+      totalLow += low; totalHigh += high;
+      const line = document.createElement('div');
+      line.textContent = `${item.qty}x ${t[item.key + '_name']} — ${formatEuro(low)} – ${formatEuro(high)}`;
+      tagItems.appendChild(line);
+    });
+    tagRange.textContent = formatEuro(totalLow) + ' – ' + formatEuro(totalHigh);
+
+    tag.classList.add('show');
+    dateBlock.classList.add('show');
+    waBtn.classList.add('show');
+  }
+
+  opts.forEach(opt => {
+    const main = opt.querySelector('.opt-main');
+    const qtyValue = opt.querySelector('.opt-qty-value');
+    const minusBtn = opt.querySelector('[data-action="minus"]');
+    const plusBtn = opt.querySelector('[data-action="plus"]');
+    const removeBtn = opt.querySelector('.opt-remove');
+
+    main.addEventListener('click', () => {
+      opt.classList.toggle('selected');
+      qtyValue.textContent = 1;
+      refresh();
+    });
+
+    minusBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      let q = parseInt(qtyValue.textContent, 10);
+      if (q > 1){ q--; qtyValue.textContent = q; refresh(); }
+    });
+    plusBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      let q = parseInt(qtyValue.textContent, 10);
+      if (q < 99){ q++; qtyValue.textContent = q; refresh(); }
+    });
+    removeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      opt.classList.remove('selected');
+      qtyValue.textContent = 1;
+      refresh();
     });
   });
 
-  document.getElementById('qtyMinus').addEventListener('click', () => {
-    if (qty > 1){ qty--; qtyValue.textContent = qty; updateTag(); }
-  });
-  document.getElementById('qtyPlus').addEventListener('click', () => {
-    if (qty < 99){ qty++; qtyValue.textContent = qty; updateTag(); }
-  });
-
   waBtn.addEventListener('click', () => {
-    if(!selected) return;
-    const base = selected.base;
-    const low = base * qty * (1 - selected.lowPct/100);
-    const high = base * qty * (1 + selected.highPct/100);
+    const cart = getCart();
+    if (cart.length === 0) return;
     const t = translations[currentLang];
-    const name = t[selected.key + '_name'];
 
     const dateVal = document.getElementById('orderDate').value;
     const timeVal = document.getElementById('orderTime').value;
@@ -677,7 +847,16 @@
       : (currentLang === 'pt' ? 'a combinar' : 'to be arranged');
     const timeText = timeVal || (currentLang === 'pt' ? 'a combinar' : 'to be arranged');
 
-    const message = t.waMessage(name, qty, formatEuro(low), formatEuro(high), dateText, timeText);
+    let lines = [t.waHeader, ''];
+    cart.forEach(item => {
+      const low = item.base * item.qty * (1 - item.lowPct/100);
+      const high = item.base * item.qty * (1 + item.highPct/100);
+      lines.push(`- ${t[item.key + '_name']} - ${t.waPriceBetween} ${formatEuro(low)}-${formatEuro(high)} - ${t.waQty}: ${item.qty};`);
+    });
+    lines.push(`- ${t.waDate}: ${dateText} ${timeText};`);
+    lines.push(`- ${t.waConfirm}`);
+
+    const message = lines.join('\n');
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   });
