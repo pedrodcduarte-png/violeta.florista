@@ -346,30 +346,90 @@
     </div>
   </header>
 
-  <div class="step-label" data-i18n="step1"></div>
-  <div class="options" id="options">
-    <button class="opt" data-key="wedding" data-base="50" data-low="7" data-high="7">
-      <span>
-        <span class="opt-name" data-i18n="wedding_name"></span>
-        <span class="opt-hint" data-i18n="wedding_hint"></span>
-      </span>
-      <span class="opt-base"><span data-i18n="from"></span> 50€</span>
-    </button>
-    <button class="opt" data-key="simple" data-base="18" data-low="4" data-high="4">
-      <span>
-        <span class="opt-name" data-i18n="simple_name"></span>
-        <span class="opt-hint" data-i18n="simple_hint"></span>
-      </span>
-      <span class="opt-base"><span data-i18n="from"></span> 18€</span>
-    </button>
-    <button class="opt" data-key="funeral" data-base="75" data-low="10" data-high="10">
-      <span>
-        <span class="opt-name" data-i18n="funeral_name"></span>
-        <span class="opt-hint" data-i18n="funeral_hint"></span>
-      </span>
-      <span class="opt-base"><span data-i18n="from"></span> 75€</span>
-    </button>
-  </div>
+<div class="step-label" data-i18n="step1"></div>
+<div class="options" id="options">
+  <button class="opt" data-key="springmix" data-base="25" data-low="10" data-high="10">
+    <span>
+      <span class="opt-name" data-i18n="springmix_name"></span>
+      <span class="opt-hint" data-i18n="springmix_hint"></span>
+    </span>
+    <span class="opt-base"><span data-i18n="from"></span> 25€</span>
+  </button>
+  <button class="opt" data-key="lilium" data-base="18" data-low="10" data-high="10">
+    <span>
+      <span class="opt-name" data-i18n="lilium_name"></span>
+      <span class="opt-hint" data-i18n="lilium_hint"></span>
+    </span>
+    <span class="opt-base"><span data-i18n="from"></span> 18€</span>
+  </button>
+  <button class="opt" data-key="tropical" data-base="35" data-low="10" data-high="10">
+    <span>
+      <span class="opt-name" data-i18n="tropical_name"></span>
+      <span class="opt-hint" data-i18n="tropical_hint"></span>
+    </span>
+    <span class="opt-base"><span data-i18n="from"></span> 35€</span>
+  </button>
+  <button class="opt" data-key="daisies" data-base="20" data-low="10" data-high="10">
+    <span>
+      <span class="opt-name" data-i18n="daisies_name"></span>
+      <span class="opt-hint" data-i18n="daisies_hint"></span>
+    </span>
+    <span class="opt-base"><span data-i18n="from"></span> 20€</span>
+  </button>
+  <button class="opt" data-key="gerberas" data-base="15" data-low="10" data-high="10">
+    <span>
+      <span class="opt-name" data-i18n="gerberas_name"></span>
+      <span class="opt-hint" data-i18n="gerberas_hint"></span>
+    </span>
+    <span class="opt-base"><span data-i18n="from"></span> 15€</span>
+  </button>
+  <button class="opt" data-key="roses3" data-base="18" data-low="10" data-high="10">
+    <span>
+      <span class="opt-name" data-i18n="roses3_name"></span>
+      <span class="opt-hint" data-i18n="roses3_hint"></span>
+    </span>
+    <span class="opt-base"><span data-i18n="from"></span> 18€</span>
+  </button>
+  <button class="opt" data-key="funeralmix" data-base="35" data-low="10" data-high="10">
+    <span>
+      <span class="opt-name" data-i18n="funeralmix_name"></span>
+      <span class="opt-hint" data-i18n="funeralmix_hint"></span>
+    </span>
+    <span class="opt-base"><span data-i18n="from"></span> 35€</span>
+  </button>
+  <button class="opt" data-key="wedding" data-base="50" data-low="10" data-high="10">
+    <span>
+      <span class="opt-name" data-i18n="wedding_name"></span>
+      <span class="opt-hint" data-i18n="wedding_hint"></span>
+    </span>
+    <span class="opt-base"><span data-i18n="from"></span> 50€</span>
+  </button>
+</div>
+
+<div class="step-label" data-i18n="stepCrowns" style="margin-top:22px;"></div>
+<div class="options" id="optionsCrowns">
+  <button class="opt" data-key="crown60" data-base="60" data-low="10" data-high="10">
+    <span>
+      <span class="opt-name" data-i18n="crown60_name"></span>
+      <span class="opt-hint" data-i18n="crown_hint"></span>
+    </span>
+    <span class="opt-base">60€</span>
+  </button>
+  <button class="opt" data-key="crown90" data-base="90" data-low="10" data-high="10">
+    <span>
+      <span class="opt-name" data-i18n="crown90_name"></span>
+      <span class="opt-hint" data-i18n="crown_hint"></span>
+    </span>
+    <span class="opt-base">90€</span>
+  </button>
+  <button class="opt" data-key="crown100" data-base="100" data-low="10" data-high="10">
+    <span>
+      <span class="opt-name" data-i18n="crown100_name"></span>
+      <span class="opt-hint" data-i18n="crown_hint"></span>
+    </span>
+    <span class="opt-base">100€</span>
+  </button>
+</div>
 
   <div class="qty-block" id="qtyBlock">
     <div class="step-label" data-i18n="step2" style="margin-top:22px;"></div>
@@ -421,11 +481,27 @@
       step1: "1 · Escolha um arranjo",
       step2: "2 · Quantidade",
       wedding_name: "Bouquê de noiva",
+      stepCrowns: "Coroas fúnebres",
+      springmix_name: "Bouquet misto primaveril",
+      springmix_hint: "Combinação alegre de flores da estação",
+      lilium_name: "Bouquet de lílium",
+      lilium_hint: "Lírios elegantes e perfumados",
+      tropical_name: "Bouquet tropical",
+      tropical_hint: "Cores vibrantes e exóticas",
+      daisies_name: "Bouquet de margaridas",
+      daisies_hint: "Fresco e delicado",
+      gerberas_name: "Bouquet de gérberas",
+      gerberas_hint: "Cores vivas, ideal para alegrar",
+      roses3_name: "Bouquet de rosas (3 rosas)",
+      roses3_hint: "3 rosas, embrulhadas",
+      funeralmix_name: "Bouquet funeral",
+      funeralmix_hint: "Misto com flores da época",
+      wedding_name: "Bouquet de noiva",
       wedding_hint: "Feito à medida das suas cores e época",
-      simple_name: "Arranjo simples (3 rosas)",
-      simple_hint: "3 rosas, embrulhadas",
-      funeral_name: "Coroa de funeral",
-      funeral_hint: "Flores frescas da época",
+      crown60_name: "Coroa fúnebre 60cm",
+      crown90_name: "Coroa fúnebre 90cm",
+      crown100_name: "Coroa fúnebre 100cm",
+      crown_hint: "Flores frescas da época",
       from: "desde",
       tagLabel: "Preço estimado",
       tagNote: "O preço final pode variar consoante o tamanho e as flores escolhidas",
@@ -442,12 +518,27 @@
       address: "Centro Comercial da Pontinha, R. Santo André 9 loja 12, 1675-174 Pontinha",
       step1: "1 · Choose an arrangement",
       step2: "2 · Quantity",
+      stepCrowns: "Funeral crowns",
+      springmix_name: "Spring mixed bouquet",
+      springmix_hint: "Cheerful mix of seasonal flowers",
+      lilium_name: "Lily bouquet",
+      lilium_hint: "Elegant, fragrant lilies",
+      tropical_name: "Tropical bouquet",
+      tropical_hint: "Vibrant, exotic colours",
+      daisies_name: "Daisy bouquet",
+      daisies_hint: "Fresh and delicate",
+      gerberas_name: "Gerbera bouquet",
+      gerberas_hint: "Bright colours, great for cheering someone up",
+      roses3_name: "Rose bouquet (3 roses)",
+      roses3_hint: "3 roses, wrapped",
+      funeralmix_name: "Funeral bouquet",
+      funeralmix_hint: "Mixed seasonal flowers",
       wedding_name: "Wedding bouquet",
       wedding_hint: "Made to match your colours and season",
-      simple_name: "Simple arrangement (3 roses)",
-      simple_hint: "3 roses, wrapped",
-      funeral_name: "Funeral crown",
-      funeral_hint: "Fresh seasonal flowers",
+      crown60_name: "Funeral crown 60cm",
+      crown90_name: "Funeral crown 90cm",
+      crown100_name: "Funeral crown 100cm",
+      crown_hint: "Fresh seasonal flowers",
       from: "from",
       tagLabel: "Estimated price",
       tagNote: "Final price may vary with size and flower choice",
