@@ -48,7 +48,7 @@
   }
   .lang-gate img{ width: 180px; height:auto; margin-bottom: 4px; }
   .lang-gate p{
-    color: var(--violet-pale);
+    color: var(--violet-deep);
     font-family: 'Fraunces', serif;
     font-size: 19px;
     margin: 0;
@@ -218,7 +218,22 @@
     text-align: center;
     color: var(--ink);
   }
-
+    .date-row{
+    display:flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  .date-input{
+    flex: 1;
+    max-width: 170px;
+    padding: 10px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--violet);
+    background: #fff;
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+  }
   /* ---------- Price ticket (signature element) ---------- */
   .tag{
     margin-top: 24px;
@@ -431,12 +446,11 @@
   </button>
 </div>
 
-  <div class="qty-block" id="qtyBlock">
-    <div class="step-label" data-i18n="step2" style="margin-top:22px;"></div>
-    <div class="qty-row">
-      <button id="qtyMinus" type="button">–</button>
-      <span class="qty-value" id="qtyValue">1</span>
-      <button id="qtyPlus" type="button">+</button>
+  <div class="qty-block" id="dateBlock">
+    <div class="step-label" data-i18n="step3" style="margin-top:22px;"></div>
+    <div class="date-row">
+      <input type="date" id="orderDate" class="date-input">
+      <input type="time" id="orderTime" class="date-input">
     </div>
   </div>
 
@@ -480,6 +494,7 @@
       address: "Centro Comercial da Pontinha, R. Santo André 9 loja 12, 1675-174 Pontinha",
       step1: "1 · Escolha um arranjo",
       step2: "2 · Quantidade",
+      step3: "3 · Para quando?",
       wedding_name: "Bouquê de noiva",
       stepCrowns: "Coroas fúnebres",
       springmix_name: "Bouquet misto primaveril",
@@ -508,8 +523,8 @@
       waBtn: "Enviar para WhatsApp",
       footer: "Página de teste · não ligada ao inventário em tempo real",
       qtyWord: "un.",
-      waMessage: (name, qty, low, high) =>
-        `Olá! Gostaria de um orçamento para: ${name}\nQuantidade: ${qty}\nGama estimada: ${low} - ${high}\nPodem confirmar detalhes e disponibilidade?`
+      waMessage: (name, qty, low, high, date, time) =>
+        `Olá! Gostaria de um orçamento para: ${name}\nQuantidade: ${qty}\nGama estimada: ${low} - ${high}\nPara a data ${date} e horário ${time}\nPodem confirmar detalhes e disponibilidade?`
     },
     en: {
       eyebrow: "Price estimate",
@@ -518,6 +533,7 @@
       address: "Centro Comercial da Pontinha, R. Santo André 9 loja 12, 1675-174 Pontinha",
       step1: "1 · Choose an arrangement",
       step2: "2 · Quantity",
+      step3: "3 · For when?",
       stepCrowns: "Funeral crowns",
       springmix_name: "Spring mixed bouquet",
       springmix_hint: "Cheerful mix of seasonal flowers",
@@ -545,8 +561,8 @@
       waBtn: "Send to WhatsApp",
       footer: "Test page · not linked to live inventory",
       qtyWord: "pc.",
-      waMessage: (name, qty, low, high) =>
-        `Hello! I'd like a price for: ${name}\nQuantity: ${qty}\nEstimated range: ${low} - ${high}\nCould you confirm details and availability?`
+      waMessage: (name, qty, low, high, date, time) =>
+        `Hello! I'd like a price for: ${name}\nQuantity: ${qty}\nEstimated range: ${low} - ${high}\nFor the date ${date} at ${time}\nCould you confirm details and availability?`
     }
   };
   // Inject the shop address text into both language packs.
@@ -627,6 +643,7 @@
 
       updateTag();
       qtyBlock.classList.add('show');
+      document.getElementById('dateBlock').classList.add('show');
       tag.classList.add('show');
       waBtn.classList.add('show');
     });
@@ -646,7 +663,15 @@
     const high = base * qty * (1 + selected.highPct/100);
     const t = translations[currentLang];
     const name = t[selected.key + '_name'];
-    const message = t.waMessage(name, qty, formatEuro(low), formatEuro(high));
+  
+    const dateVal = document.getElementById('orderDate').value;
+    const timeVal = document.getElementById('orderTime').value;
+    const dateText = dateVal
+      ? dateVal.split('-').reverse().join('/')
+      : (currentLang === 'pt' ? 'a combinar' : 'to be arranged');
+    const timeText = timeVal || (currentLang === 'pt' ? 'a combinar' : 'to be arranged');
+  
+    const message = t.waMessage(name, qty, formatEuro(low), formatEuro(high), dateText, timeText);
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   });
